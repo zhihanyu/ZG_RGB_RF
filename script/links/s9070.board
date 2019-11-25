@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<flash_board> 
+  <pass> 
+  <loader>$PROJ_DIR$\..\..\..\..\debug\flashloader\s907x.flash</loader>    
+  <range>CODE 0x18060020 0x18088608 </range> 
+  <abs_offset>0x60020</abs_offset>  
+  <args>--s907xMsg</args> 
+  </pass> 
+  <pass> 
+  <loader>$PROJ_DIR$\..\..\..\..\debug\flashloader\s907x.flash</loader>    
+  <range>CODE 0x10015900 0x10016820 </range> 
+  <abs_offset>0xb000</abs_offset>  
+  <args>--isram</args> 
+  </pass> 
+ </flash_board> 

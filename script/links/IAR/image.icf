@@ -1,0 +1,92 @@
+include "s907x_bin_api.icf";
+
+ 
+define symbol __USER_RAM_START__    	= 0x10015900;
+define symbol __USER_RAM_END__      	= 0x10046FFF;
+
+//OTA2 tuya
+//define symbol __USER_CODE_START__ 	= 0x18124000+0x20;
+//define symbol __USER_CODE_END__   	= 0x181FFFFF;  
+
+//OTA2 sci
+//define symbol __USER_CODE_START__ 	= 0x18130000+0x20;
+//define symbol __USER_CODE_END__   	= 0x181FFFFF;  
+
+//OTA1 sci
+define symbol __USER_CODE_START__ 	    = 0x18060000+0x20;
+define symbol __USER_CODE_END__   	    = 0x181FFFFF;  
+//C HEAP
+define symbol __CHEAP_START__ 	    = 0x10045000;
+define symbol __CHEAP_END__   	    = 0x10045FFF;  
+define symbol __CHEAP_SIZE          = __CHEAP_END__ - __CHEAP_START__ + 1;
+
+define memory mem with size = 4G;
+
+define region USER_RAM_REGION    = mem:[from __USER_RAM_START__   to __USER_RAM_END__];
+
+define region USER_COD_REGION    = mem:[from __USER_CODE_START__   to __USER_CODE_END__];
+
+define region USER_CHEAP_REGION    = mem:[from __CHEAP_START__   to __CHEAP_END__];
+
+keep { section .system.entry.data* };
+define block .system.entry with fixed order{ section .system.entry.data*,};
+
+
+define block SHT$$PREINIT_ARRAY { preinit_array };
+define block SHT$$INIT_ARRAY { init_array };
+define block CPP_INIT with fixed order { block SHT$$PREINIT_ARRAY,
+					block SHT$$INIT_ARRAY };
+
+  
+
+define block .ram.data with fixed order{ section .data*, 
+					 section DATA, 
+					 section .iar.init_table,
+					 section __DLIB_PERTHREAD,				 	 
+					 block CPP_INIT,
+					 section .mdns.data,
+					 section .mdns.text
+					};
+
+
+
+define block .ota1_ram.data with fixed order {  block .system.entry,
+										        block .ram.data,  };
+
+
+define block .ota1_ram.bss with fixed order{ section .bss*,
+                                             section COMMON, };
+
+
+keep { section .heap.start.data* };
+define block .heap.start with fixed order{ section .heap.start.data*,};
+
+
+
+
+place at start of USER_RAM_REGION  { readwrite, 
+                        block .ota1_ram.data,
+                        block .ota1_ram.bss,
+                        section .intvec,
+                        block .heap.start
+					};
+
+
+define block .ota1_image.text with fixed order{
+						section .text*,
+						section .rodata*,
+						section .debug_trace,
+						section CODE,
+						section Veneer, 
+						};
+place at start of  USER_COD_REGION   {  readwrite, 
+					  block .ota1_image.text };
+
+
+
+
+define block HEAP      with alignment = 8, size = __CHEAP_SIZE     { };
+
+
+place at start of  USER_CHEAP_REGION   {  readwrite, 
+					  block HEAP };

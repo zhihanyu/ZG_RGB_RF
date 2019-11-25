@@ -1,0 +1,15 @@
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\arm\bin\armproc.dll" 
+
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\arm\bin\armjlink.dll" 
+
+"E:\sdk\zg\code_rf\s907x_freertos\out\IAR\Debug\Exe\application.axf" 
+
+--plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\arm\bin\armbat.dll" 
+
+--macro "E:\sdk\zg\code_rf\s907x_freertos\example\main\project\IAR\..\..\..\..\..\script\links\IAR\preload.mac" 
+
+--flash_loader "E:\sdk\zg\code_rf\s907x_freertos\example\main\project\IAR\..\..\..\..\script\links\s9070.board" 
+
+
+
+

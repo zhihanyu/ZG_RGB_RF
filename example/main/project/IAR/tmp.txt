@@ -1,0 +1,8 @@
+\..\script\tools 
+freertos 
+ota_bin_ver=0x÷‹ŒÂ 21909 
+flash_s:  
+flash_e:  
+ram_s:  
+ram_e:  
+sec_ram:  sec_text:   

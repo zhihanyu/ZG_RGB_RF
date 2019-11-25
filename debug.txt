@@ -1,0 +1,11 @@
+"Compile in windows enviroment."
+"D:/member/wudd/s907x_sdk_linux/s907x_sdk/code"
+D:/member/wudd/s907x_sdk_linux/s907x_sdk/build/cmd/win32/make -C D:/member/wudd/s907x_sdk_linux/s907x_sdk/code
+make[1]: Entering directory 'D:/member/wudd/s907x_sdk_linux/s907x_sdk/code'
+"./atcmd  ./cmsis  ./core  ./net  ./startup ./utils"
+D:/member/wudd/s907x_sdk_linux/s907x_sdk/build/cmd/win32/make -C atcmd
+make[2]: Entering directory 'D:/member/wudd/s907x_sdk_linux/s907x_sdk/code/atcmd'
+"Compiling ./at_cmd.c..."
+"Compiling ./at_esp/at_esp_init.c..."
+make[2]: Leaving directory 'D:/member/wudd/s907x_sdk_linux/s907x_sdk/code/atcmd'
+make[1]: Leaving directory 'D:/member/wudd/s907x_sdk_linux/s907x_sdk/code'

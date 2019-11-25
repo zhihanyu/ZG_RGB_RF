@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<userOverrides>
+  <override>
+    <path>I:\S9070_0718_TEST_API_NO_OS\code\test_api\onekeytest.c</path>
+    <encoding>System</encoding>
+  </override>
+  <override>
+    <path>I:\S9070_07_24_TEST_ALL\code\lib\os\os_api.c</path>
+    <encoding>System</encoding>
+  </override>
+  <override>
+    <path>I:\S9070_07_24_TEST_ALL\code\test_api\onekeytest.c</path>
+    <encoding>System</encoding>
+  </override>
+  <override>
+    <path>I:\S9070_08_17_rom\code\lib\os\os_api.c</path>
+    <encoding>System</encoding>
+  </override>
+</userOverrides>
+
+

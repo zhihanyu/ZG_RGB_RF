@@ -1,0 +1,25 @@
+;0x18130020 0x18060020
+;default as 18060020, ota1
+LOAD_REGION 0x18060020 0x200000 {    		 ; load region address max_size
+  USER_CODE_REGION 0x18060020 0x19FFDF  {  ; load address = execution address
+   * (+RO-CODE)
+   * (+RO-DATA)
+  }
+  
+  OTA_RAM_DATA 0x10015900 0x000316FF {
+   system_start.o (.system.entry.data +FIRST)
+   * (.data)
+  }    
+
+  OTA_RAM_BSS + 0 {
+   * (.bss)
+   * (+ZI)
+  }
+
+  OTA_RAM_HEAP + 0 {
+    heap_4.o (.heap.start.data)
+  }  
+
+}
+
+
